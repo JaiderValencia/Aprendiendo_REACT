@@ -1,62 +1,35 @@
 import React from 'react'
 import SmallCard from './SmallCard'
 
+const cardsInfo = [
+    {
+        color: 'primary',
+        title: 'Movies in Data Base',
+        quantity: 21,
+        icon: 'fa-film'
+    },
+    {
+        color: 'success',
+        title: 'Total awards',
+        quantity: 79,
+        icon: 'fa-award'
+    },
+    {
+        color: 'warning',
+        title: 'Actors quantity',
+        quantity: 49,
+        icon: 'fa-user'
+    }
+]
 
 function ContentRowMovies() {
     return (
         <div className="row">
-            <SmallCard color='warning' title='Movies in DB' quantity={50} icon='fa-user'/>
-            {/* <!-- Movies in Data Base --> */}
-            {/* <div className="col-md-4 mb-4">
-                <div className="card border-left-primary shadow h-100 py-2">
-                    <div className="card-body">
-                        <div className="row no-gutters align-items-center">
-                            <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Movies in Data Base</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">21</div>
-                            </div>
-                            <div className="col-auto">
-                                <i className="fas fa-film fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-            {/* <!-- Total awards --> */}
-            {/* <div className="col-md-4 mb-4">
-                <div className="card border-left-success shadow h-100 py-2">
-                    <div className="card-body">
-                        <div className="row no-gutters align-items-center">
-                            <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Total awards</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">79</div>
-                            </div>
-                            <div className="col-auto">
-                                <i className="fas fa-award fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-            {/* <!-- Actors quantity --> */}
-            {/* <div className="col-md-4 mb-4">
-                <div className="card border-left-warning shadow h-100 py-2">
-                    <div className="card-body">
-                        <div className="row no-gutters align-items-center">
-                            <div className="col mr-2">
-                                <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Actors quantity
-                                </div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">49</div>
-                            </div>
-                            <div className="col-auto">
-                                <i className="fas fa-user fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+            {
+                cardsInfo.map((cardInfo, i) => (
+                    <SmallCard key={i} color={cardInfo.color} title={cardInfo.title} quantity={cardInfo.quantity} icon={cardInfo.icon} />
+                ))
+            }
         </div>
     )
 }
