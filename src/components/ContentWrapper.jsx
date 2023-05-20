@@ -4,6 +4,22 @@ import TopBar from './TopBar'
 import ContentRowTop from './ContentRowTop'
 import Table from './table'
 
+const movies = [
+    {
+        title: 'Billy Elliot',
+        length: 123,
+        rating: 5,
+        genres: ['Drama', 'Comedia'],
+        awards: 2
+    },
+    {
+        title: 'Alicia en el país de las maravillas',
+        length: 142,
+        rating: 4.8,
+        genres: ['Drama', 'Acción', 'Comedia'],
+        awards: 3
+    },
+]
 
 function ContentWrapper(params) {
     return (<div id="content-wrapper" className="d-flex flex-column">
@@ -22,7 +38,7 @@ function ContentWrapper(params) {
         {/* <!-- End of MainContent --> */}
 
         {/* Table */}
-        <Table />
+        <Table movies={movies} />
         {/* end-Table */}
 
         {/* <!-- Footer --> */}
