@@ -3,41 +3,57 @@ import PropTypes from 'prop-types'
 
 function ContentTable(props) {
     return (
-        <tr>
-            <td>
-                {props.title}
-            </td>
-            <td>
-                {props.length}
-            </td>
-            <td>
-                {props.rating}
-            </td>
-            <td>
-                <ul>
-                    {props.genres.map((genre, i)=>(<li key={i}>{genre}</li>))}
-                </ul>
-            </td>
-            <td>
-                {props.awards}
-            </td>
-        </tr>
+        <React.Fragment>
+            <tr>
+                <td>
+                    {props.id}
+                </td>
+                <td>
+                    {props.title}
+                </td>
+                <td>
+                    {props.length}
+                </td>
+                <td>
+                    {props.rating}
+                </td>
+                <td>
+                    {props.awards}
+                </td>
+            </tr>
+        </React.Fragment>
     )
 }
 
 ContentTable.propTypes = {
+    id: PropTypes.oneOfType(
+        [
+            PropTypes.string,
+            PropTypes.number
+        ]
+    ),
     title: PropTypes.string.isRequired,
     length: PropTypes.number.isRequired,
-    rating: PropTypes.number,
-    genre: PropTypes.array.isRequired,
-    awards: PropTypes.number
+    rating: PropTypes.oneOfType(
+        [
+            PropTypes.string,
+            PropTypes.number
+        ]
+    ).isRequired,
+    awards: PropTypes.oneOfType(
+        [
+            PropTypes.number,
+            PropTypes.string
+        ]
+    )
 }
 
 ContentTable.defaultProps = {
+    id: 0,
     title: 'NaN',
     length: 0,
     rating: 0,
-    genre: ['NaN'],
+    genre: 'NaN',
     awards: 0
 }
 
