@@ -15,12 +15,12 @@ class Table extends React.Component {
     }
 
     render() {
-        return (            
+        return (
             <table>
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Título</th>
+                        <th>nombre</th>
                         <th>Duración</th>
                         <th>Rating</th>
                         <th>Premios</th>
