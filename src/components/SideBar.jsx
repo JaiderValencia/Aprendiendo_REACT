@@ -49,6 +49,13 @@ function SideBar(params) {
                 <span>Last movie</span></Link>
         </li>
 
+        {/* <!-- Nav Item - search movie --> */}
+        <li className="nav-item">
+            <Link className="nav-link" to="/search">
+                <i className="fas fa-fw fa-table"></i>
+                <span>Buscar</span></Link>
+        </li>
+
         {/* <!-- Divider --> */}
         <hr className="sidebar-divider d-none d-md-block" />
     </ul>)
