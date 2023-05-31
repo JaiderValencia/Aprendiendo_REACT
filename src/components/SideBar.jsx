@@ -52,7 +52,7 @@ function SideBar(params) {
         {/* <!-- Nav Item - search movie --> */}
         <li className="nav-item">
             <Link className="nav-link" to="/search">
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
                 <span>Buscar</span></Link>
         </li>
 
