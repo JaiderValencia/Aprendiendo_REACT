@@ -1,24 +1,26 @@
-import React from 'react';
+import React from 'react'
 
 function SearchMovies() {
 
-    const movies = [
-        {
-            "Title": "Parchís",
-            "Year": "1983",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BYTgxNjg2MTAtYjhmYS00NjQwLTk1YTMtNmZmOTMyNTAwZWUwXkEyXkFqcGdeQXVyMTY5MDE5NA@@._V1_SX300.jpg"
-        },
-        {
-            "Title": "Brigada en acción",
-            "Year": "1977",
-            "Poster": "N/A"
-        },
-    ];
+    const [movies, setMovie] = React.useState([])
 
-    const keyword = 'PELÍCULA DEMO';
+    const keyword = 'avatar'
 
     // Credenciales de API
-    const apiKey = 'X'; // Intenta poner cualquier cosa antes para probar
+    const apiKey = '8e9cbd2f' // Intenta poner cualquier cosa antes para probar
+
+    React.useEffect(() => {
+        fetch(`http://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.error) {
+                    setMovie(data.Search)
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
 
     return (
         <div className="container-fluid">
@@ -76,4 +78,4 @@ function SearchMovies() {
     )
 }
 
-export default SearchMovies;
+export default SearchMovies
