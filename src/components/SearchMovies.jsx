@@ -4,7 +4,7 @@ function SearchMovies() {
 
     const [movies, setMovie] = React.useState([])
 
-    const keyword = 'avatar'
+    const [keyword, setKeyword] = React.useState("superman")
 
     // Credenciales de API
     const apiKey = '8e9cbd2f' // Intenta poner cualquier cosa antes para probar
@@ -20,7 +20,22 @@ function SearchMovies() {
             .catch(err => {
                 console.log(err);
             })
-    })
+    }, [])
+
+    const onSearch = (e) => {
+        e.preventDefault()
+
+        fetch(`http://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.error) {
+                    setMovie(data.Search)
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     return (
         <div className="container-fluid">
@@ -30,10 +45,10 @@ function SearchMovies() {
                         <div className="row my-4">
                             <div className="col-12 col-md-6">
                                 {/* Buscador */}
-                                <form method="GET">
+                                <form onSubmit={onSearch}>
                                     <div className="form-group">
                                         <label htmlFor="">Buscar por título:</label>
-                                        <input type="text" className="form-control" />
+                                        <input type="text" className="form-control" onChange={(e) => setKeyword(e.target.value)} />
                                     </div>
                                     <button className="btn btn-info">Search</button>
                                 </form>
