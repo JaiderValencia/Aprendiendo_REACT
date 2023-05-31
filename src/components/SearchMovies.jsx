@@ -9,32 +9,24 @@ function SearchMovies() {
     // Credenciales de API
     const apiKey = '8e9cbd2f' // Intenta poner cualquier cosa antes para probar
 
-    React.useEffect(() => {
+    const apiCall = () => {
         fetch(`http://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`)
             .then(res => res.json())
             .then(data => {
-                if (!data.error) {
-                    setMovie(data.Search)
-                }
+                setMovie(data.Search || [])
             })
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    React.useEffect(() => {
+        apiCall()
     }, [])
 
     const onSearch = (e) => {
         e.preventDefault()
-
-        fetch(`http://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`)
-            .then(res => res.json())
-            .then(data => {
-                if (!data.error) {
-                    setMovie(data.Search)
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        apiCall()
     }
 
     return (
